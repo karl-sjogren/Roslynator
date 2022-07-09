@@ -2497,5 +2497,17 @@ namespace Roslynator.CSharp
             helpLinkUri:        DiagnosticIdentifiers.NormalizeFormatOfEnumFlagValue, 
             customTags:         Array.Empty<string>());
 
+        /// <summary>RCS9999</summary>
+        public static readonly DiagnosticDescriptor NormalizeNamespaceScopeStyle = DiagnosticDescriptorFactory.Create(
+            id:                 DiagnosticIdentifiers.NormalizeNamespaceScopeStyle, 
+            title:              "Normalize namespace scope style.", 
+            messageFormat:      "{0}", 
+            category:           DiagnosticCategories.Roslynator, 
+            defaultSeverity:    DiagnosticSeverity.Info, 
+            isEnabledByDefault: false, 
+            description:        null, 
+            helpLinkUri:        DiagnosticIdentifiers.NormalizeNamespaceScopeStyle, 
+            customTags:         Array.Empty<string>());
+
     }
 }

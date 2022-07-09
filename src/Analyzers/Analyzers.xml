@@ -5741,4 +5741,37 @@ void M()
       <Option Key="enum_flag_value_style" IsRequired="true" />
     </ConfigOptions>
   </Analyzer>
+  <Analyzer Identifier="NormalizeNamespaceScopeStyle">
+    <Id>RCS9999</Id>
+    <Title>Normalize namespace scope style.</Title>
+    <MessageFormat>{0}</MessageFormat>
+    <Category>Roslynator</Category>
+    <DefaultSeverity>Info</DefaultSeverity>
+    <IsEnabledByDefault>false</IsEnabledByDefault>
+    <MinLanguageVersion>10.0</MinLanguageVersion>
+    <Samples>
+      <Sample>
+        <Before><![CDATA[using System;
+
+[|namespace Foo
+{
+    public class Bar
+    {
+
+    }
+}|]]]></Before>
+        <After><![CDATA[using System;
+
+namespace Foo;
+
+public class Bar
+{
+
+}]]></After>
+      </Sample>
+    </Samples>
+    <ConfigOptions>
+      <Option Key="namespace_scope_style" IsRequired="true" />
+    </ConfigOptions>
+  </Analyzer>
 </Analyzers>

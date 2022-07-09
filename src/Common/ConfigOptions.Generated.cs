@@ -128,6 +128,12 @@ namespace Roslynator
             defaultValuePlaceholder: "<NUM>", 
             description:             "Max line length");
 
+        public static readonly ConfigOptionDescriptor NamespaceScopeStyle = new(
+            key:                     ConfigOptionKeys.NamespaceScopeStyle, 
+            defaultValue:            null, 
+            defaultValuePlaceholder: "block|file", 
+            description:             "Sets the type of namespace scope to prefer");
+
         public static readonly ConfigOptionDescriptor NewLineAtEndOfFile = new(
             key:                     ConfigOptionKeys.NewLineAtEndOfFile, 
             defaultValue:            null, 
@@ -140,17 +146,17 @@ namespace Roslynator
             defaultValuePlaceholder: "true|false", 
             description:             "Include/omit new line before 'while' in 'do' statement");
 
-        public static readonly ConfigOptionDescriptor NullConditionalOperatorNewLine = new(
-            key:                     ConfigOptionKeys.NullConditionalOperatorNewLine, 
-            defaultValue:            null, 
-            defaultValuePlaceholder: "after|before", 
-            description:             "Place new line after/before null-conditional operator");
-
         public static readonly ConfigOptionDescriptor NullCheckStyle = new(
             key:                     ConfigOptionKeys.NullCheckStyle, 
             defaultValue:            null, 
             defaultValuePlaceholder: "equality_operator|pattern_matching", 
             description:             "Use equality operator or pattern matchding as a null check");
+
+        public static readonly ConfigOptionDescriptor NullConditionalOperatorNewLine = new(
+            key:                     ConfigOptionKeys.NullConditionalOperatorNewLine, 
+            defaultValue:            null, 
+            defaultValuePlaceholder: "after|before", 
+            description:             "Place new line after/before null-conditional operator");
 
         public static readonly ConfigOptionDescriptor ObjectCreationParenthesesStyle = new(
             key:                     ConfigOptionKeys.ObjectCreationParenthesesStyle, 
@@ -227,6 +233,7 @@ namespace Roslynator
             yield return new KeyValuePair<string, string>("RCS1252", JoinOptionKeys(ConfigOptionKeys.InfiniteLoopStyle));
             yield return new KeyValuePair<string, string>("RCS1253", JoinOptionKeys(ConfigOptionKeys.DocCommentSummaryStyle));
             yield return new KeyValuePair<string, string>("RCS1254", JoinOptionKeys(ConfigOptionKeys.EnumFlagValueStyle));
+            yield return new KeyValuePair<string, string>("RCS9999", JoinOptionKeys(ConfigOptionKeys.NamespaceScopeStyle));
         }
     }
 }

@@ -122,17 +122,20 @@ roslynator_max_line_length = <NUM>
 # Default: 140
 # Applicable to: rcs0056
 
+roslynator_namespace_scope_style = block|file
+# Applicable to: rcs9999
+
 roslynator_new_line_at_end_of_file = true|false
 # Applicable to: rcs0058
 
 roslynator_new_line_before_while_in_do_statement = true|false
 # Applicable to: rcs0051
 
-roslynator_null_conditional_operator_new_line = after|before
-# Applicable to: rcs0059
-
 roslynator_null_check_style = equality_operator|pattern_matching
 # Applicable to: rcs1248
+
+roslynator_null_conditional_operator_new_line = after|before
+# Applicable to: rcs0059
 
 roslynator_object_creation_parentheses_style = include|omit
 # Applicable to: rcs1050
@@ -966,6 +969,10 @@ dotnet_diagnostic.rcs9010.severity = silent
 # Specify ExportCodeFixProviderAttribute.Name
 dotnet_diagnostic.rcs9011.severity = silent
 
+# Normalize namespace scope style
+dotnet_diagnostic.rcs9999.severity = none
+# Options: roslynator_namespace_scope_style
+
 
 # Refactorings
 
@@ -987,6 +994,11 @@ roslynator_refactoring.add_using_directive.enabled = true
 roslynator_refactoring.add_using_static_directive.enabled = true
 roslynator_refactoring.call_extension_method_as_instance_method.enabled = true
 roslynator_refactoring.call_indexof_instead_of_contains.enabled = true
+roslynator_refactoring.change_accessibility.enabled = true
+roslynator_refactoring.change_method_return_type_to_void.enabled = true
+roslynator_refactoring.change_type_according_to_expression.enabled = true
+roslynator_refactoring.check_expression_for_null.enabled = true
+roslynator_refactoring.check_parameter_for_null.enabled = true
 roslynator_refactoring.comment_out_member_declaration.enabled = true
 roslynator_refactoring.comment_out_statement.enabled = true
 roslynator_refactoring.convert_auto_property_to_full_property.enabled = true
@@ -1041,11 +1053,6 @@ roslynator_refactoring.generate_enum_member.enabled = true
 roslynator_refactoring.generate_enum_values.enabled = true
 roslynator_refactoring.generate_event_invoking_method.enabled = true
 roslynator_refactoring.generate_property_for_debuggerdisplay_attribute.enabled = true
-roslynator_refactoring.change_accessibility.enabled = true
-roslynator_refactoring.change_method_return_type_to_void.enabled = true
-roslynator_refactoring.change_type_according_to_expression.enabled = true
-roslynator_refactoring.check_expression_for_null.enabled = true
-roslynator_refactoring.check_parameter_for_null.enabled = true
 roslynator_refactoring.implement_custom_enumerator.enabled = true
 roslynator_refactoring.implement_iequatable.enabled = true
 roslynator_refactoring.initialize_field_from_constructor.enabled = true

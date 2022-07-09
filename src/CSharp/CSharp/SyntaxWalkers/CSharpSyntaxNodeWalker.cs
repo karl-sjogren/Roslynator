@@ -667,6 +667,34 @@ namespace Roslynator.CSharp.SyntaxWalkers
             }
         }
 
+        public override void VisitCheckedExpression(CheckedExpressionSyntax node)
+        {
+            if (!ShouldVisit)
+            {
+                return;
+            }
+
+            ExpressionSyntax expression = node.Expression;
+            if (expression != null)
+            {
+                VisitExpression(expression);
+            }
+        }
+
+        public override void VisitCheckedStatement(CheckedStatementSyntax node)
+        {
+            if (!ShouldVisit)
+            {
+                return;
+            }
+
+            BlockSyntax block = node.Block;
+            if (block != null)
+            {
+                VisitBlock(block);
+            }
+        }
+
         public override void VisitClassDeclaration(ClassDeclarationSyntax node)
         {
             foreach (AttributeListSyntax attributeList in node.AttributeLists)
@@ -1992,34 +2020,6 @@ namespace Roslynator.CSharp.SyntaxWalkers
             if (byExpression != null)
             {
                 VisitExpression(byExpression);
-            }
-        }
-
-        public override void VisitCheckedExpression(CheckedExpressionSyntax node)
-        {
-            if (!ShouldVisit)
-            {
-                return;
-            }
-
-            ExpressionSyntax expression = node.Expression;
-            if (expression != null)
-            {
-                VisitExpression(expression);
-            }
-        }
-
-        public override void VisitCheckedStatement(CheckedStatementSyntax node)
-        {
-            if (!ShouldVisit)
-            {
-                return;
-            }
-
-            BlockSyntax block = node.Block;
-            if (block != null)
-            {
-                VisitBlock(block);
             }
         }
 
@@ -4924,6 +4924,10 @@ namespace Roslynator.CSharp.SyntaxWalkers
                 case SyntaxKind.CastExpression:
                     VisitCastExpression((CastExpressionSyntax)node);
                     break;
+                case SyntaxKind.CheckedExpression:
+                case SyntaxKind.UncheckedExpression:
+                    VisitCheckedExpression((CheckedExpressionSyntax)node);
+                    break;
                 case SyntaxKind.ConditionalAccessExpression:
                     VisitConditionalAccessExpression((ConditionalAccessExpressionSyntax)node);
                     break;
@@ -4947,10 +4951,6 @@ namespace Roslynator.CSharp.SyntaxWalkers
                     break;
                 case SyntaxKind.GenericName:
                     VisitGenericName((GenericNameSyntax)node);
-                    break;
-                case SyntaxKind.CheckedExpression:
-                case SyntaxKind.UncheckedExpression:
-                    VisitCheckedExpression((CheckedExpressionSyntax)node);
                     break;
                 case SyntaxKind.IdentifierName:
                     VisitIdentifierName((IdentifierNameSyntax)node);
@@ -5328,6 +5328,10 @@ namespace Roslynator.CSharp.SyntaxWalkers
                 case SyntaxKind.BreakStatement:
                     VisitBreakStatement((BreakStatementSyntax)node);
                     break;
+                case SyntaxKind.CheckedStatement:
+                case SyntaxKind.UncheckedStatement:
+                    VisitCheckedStatement((CheckedStatementSyntax)node);
+                    break;
                 case SyntaxKind.ContinueStatement:
                     VisitContinueStatement((ContinueStatementSyntax)node);
                     break;
@@ -5356,10 +5360,6 @@ namespace Roslynator.CSharp.SyntaxWalkers
                 case SyntaxKind.GotoCaseStatement:
                 case SyntaxKind.GotoDefaultStatement:
                     VisitGotoStatement((GotoStatementSyntax)node);
-                    break;
-                case SyntaxKind.CheckedStatement:
-                case SyntaxKind.UncheckedStatement:
-                    VisitCheckedStatement((CheckedStatementSyntax)node);
                     break;
                 case SyntaxKind.IfStatement:
                     VisitIfStatement((IfStatementSyntax)node);
